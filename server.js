@@ -16,6 +16,10 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'));
+}
+
 app.use('/api/v1/transactions', transactions);
 
 const PORT = process.env.PORT || 5000;
